@@ -1,0 +1,122 @@
+{
+  "name": "Peekaboo",
+  "description": "",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "better-npm-run build",
+    "build:dev": "better-npm-run build:dev",
+    "build:beta": "better-npm-run build:beta",
+    "build:prod": "better-npm-run build:prod",
+    "serve": "better-npm-run serve",
+    "serve:dist": "better-npm-run build && better-npm-run serve:dist",
+    "eslint": "better-npm-run eslint"
+  },
+  "betterScripts": {
+    "serve": {
+      "command": "webpack-dashboard -- babel-node tools/serve.js"
+    },
+    "serve:nodashboard": {
+      "command": "babel-node tools/serve.js"
+    },
+    "serve:dist": {
+      "command": "babel-node tools/serve:dist.js"
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details --config config/webpack.build.babel.js",
+      "env": {
+        "NODE_ENV": "local",
+        "CDN_ROOT": ""
+      }
+    },
+    "build:dev": {
+      "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
+      "env": {
+        "NODE_ENV": "development",
+        "CDN_ROOT": "//l-wap1.wap.dev.cn6.qunar.com/xxx/dev/assets"
+      }
+    },
+    "build:beta": {
+      "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
+      "env": {
+        "NODE_ENV": "beta",
+        "CDN_ROOT": "//mobileqzz.beta.qunar.com/xxx/prd/assets"
+      }
+    },
+    "build:prod": {
+      "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
+      "env": {
+        "NODE_ENV": "production",
+        "CDN_ROOT": "//s.qunarzz.com/xxx/prd/assets"
+      }
+    },
+    "eslint": {
+      "command": "./node_modules/.bin/eslint src"
+    }
+  },
+  "devDependencies": {
+    "express": "^4.14.0",
+    "open-browser-webpack-plugin": "^0.0.2",
+    "packing-urlrewrite": "^0.1.7",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
+    "webpack-dashboard": "^0.2.0",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.9.2",
+    "better-npm-run": "^0.0.11",
+    "classnames": "^2.2.5",
+    "clean-webpack-plugin": "^0.1.10",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
+    "eslint-plugin-react": "^6.2.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.3",
+    "image-webpack-loader": "^2.0.0",
+    "loader-utils": "^0.2.15",
+    "move-webpack-plugin": "0.0.1",
+    "packing-ajax": "^0.0.1",
+    "packing-glob": "^1.0.1",
+    "packing-profile-webpack-plugin": "^1.0.3",
+    "packing-rev-webpack-plugin": "^1.0.7",
+    "postcss-loader": "^0.13.0",
+    "react": "^15.3.1",
+    "react-a11y": "^0.3.3",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "react-transform-catch-errors": "^1.0.2",
+    "redbox-react": "^1.3.0",
+    "redux": "^3.5.2",
+    "replace-hash-webpack-plugin": "^1.4.12",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  },
+  "engines": {
+    "node": ">=0.12.7"
+  }
+}
