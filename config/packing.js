@@ -7,6 +7,9 @@
 import path from 'path';
 import packingGlob from 'packing-glob';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'local';
+process.env.CDN_ROOT = process.env.CDN_ROOT || '';
+
 export default {
   // 文件路径，所有目录都使用相对于项目根目录的相对目录格式
   path: {
@@ -25,19 +28,19 @@ export default {
 
     // 模版目录，如果模版支持继承或layout的话
     // 模板一般会再区分布局文件(layout)和网页文件(pages)
-    templates: 'src/templates',
+    templates: 'src/templates/pages',
 
     // 编译后的模版目录，如果模版支持继承或layout的话
     // 模板一般会再区分布局文件(layout)和网页文件(pages)
     // 该变量修改时，需要同步修改pom.xml文件`project.properties.qzz_files`节点值
     // 该目录需要添加到项目根目录下的.gitignore中
-    templatesDist: 'prd/templates',
+    templatesDist: 'prd/pages',
 
     // 模版网页文件，如果没有使用layout的话，保持这个地址和`templates`一致
     templatesPages: 'src/templates/pages',
 
     // 编译后的模版网页文件，如果没有使用layout的话，保持这个地址和`templatesDist`一致
-    templatesPagesDist: 'prd/templates/pages',
+    templatesPagesDist: 'prd/pages',
 
     // webpack打包入口JS文件目录
     // As value an object, a function is accepted.
@@ -46,13 +49,14 @@ export default {
     //   list: './src/entries/list.js'
     // },
     entries: () => {
-      const entryPath = 'src/entries';
-      const entryPattern = '**/*.js';
+      const entryPath = 'src/app/pages';
+      const entryPattern = '*/+(index.js|style.css)';
       const cwd = path.resolve(entryPath);
       const config = {};
       packingGlob(entryPattern, { cwd }).forEach((page) => {
         const ext = path.extname(page).toLowerCase();
-        const key = page.replace(ext, '');
+        let key = page.split('/')[0];
+        console.log(' --- page --- ', page, '\n ---- key ---- ', key);
         config[key] = path.join(cwd, page);
       });
       return config;
@@ -60,9 +64,9 @@ export default {
   },
 
   // 模版引擎类型，目前支持的类型有[html,pug,ejs,handlebars,smarty,velocity,artTemplate]
-  templateEngine: 'html',
+  templateEngine: 'pug',
   // 模版文件扩展名
-  templateExtension: '.html',
+  templateExtension: '.pug',
 
   // 本地访问的域名，为了调试方便，可能改成my.qunar.com
   localhost: 'localhost',
@@ -107,7 +111,7 @@ export default {
   // require! 表示使用本地mock文件
   rewriteRules: {
     // 网站URL与模版的对应路由关系
-    '^/$': '/index.html',
+    '^/$': '/home.pug',
 
     // API转发
     '^/api/(.*)': 'require!/mock/api/$1.js'

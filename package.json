@@ -33,21 +33,21 @@
       "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
       "env": {
         "NODE_ENV": "development",
-        "CDN_ROOT": "//l-wap1.wap.dev.cn6.qunar.com/xxx/dev/assets"
+        "CDN_ROOT": "//dev.xxx.com/xxx/dev/assets"
       }
     },
     "build:beta": {
       "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
       "env": {
         "NODE_ENV": "beta",
-        "CDN_ROOT": "//mobileqzz.beta.qunar.com/xxx/prd/assets"
+        "CDN_ROOT": "//beta.xxx.com/xxx/prd/assets"
       }
     },
     "build:prod": {
       "command": "webpack --verbose --display-error-details --config config/webpack.build.babel.js",
       "env": {
         "NODE_ENV": "production",
-        "CDN_ROOT": "//s.qunarzz.com/xxx/prd/assets"
+        "CDN_ROOT": "//www.xxx.com/xxx/prd/assets"
       }
     },
     "eslint": {
@@ -57,6 +57,7 @@
   "devDependencies": {
     "express": "^4.14.0",
     "open-browser-webpack-plugin": "^0.0.2",
+    "packing-template-pug": "^1.0.5",
     "packing-urlrewrite": "^0.1.7",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
@@ -66,7 +67,6 @@
     "webpack-hot-middleware": "^2.12.1"
   },
   "dependencies": {
-    "autoprefixer": "^6.4.0",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.0",
@@ -102,6 +102,7 @@
     "packing-glob": "^1.0.1",
     "packing-profile-webpack-plugin": "^1.0.3",
     "packing-rev-webpack-plugin": "^1.0.7",
+    "postcss-cssnext": "^2.8.0",
     "postcss-loader": "^0.13.0",
     "react": "^15.3.1",
     "react-a11y": "^0.3.3",

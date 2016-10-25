@@ -11,16 +11,17 @@ import urlrewrite from 'packing-urlrewrite';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../config/webpack.serve.babel';
-import packing, { rewriteRules } from '../config/packing';
+import packing, { rewriteRules, templateEngine } from '../config/packing';
 
-
+// eslint-disable-next-line
+const template = require(`packing-template-${templateEngine}`);
 
 const { src, assets, templatesPages, mockPageInit } = packing.path;
 const compiler = webpack(webpackConfig);
 const port = packing.port.dev;
 const serverOptions = {
   contentBase: src,
-  quiet: false,
+  quiet: true,
   noInfo: false,
   hot: true,
   inline: true,
@@ -32,9 +33,15 @@ const serverOptions = {
 
 const app = new Express();
 app.use(Express.static(path.join(__dirname, '..', assets)));
+// app.use(Express.static(path.join(__dirname, '..', templatesPages)));
 app.use(urlrewrite(rewriteRules));
 app.use(webpackDevMiddleware(compiler, serverOptions));
 app.use(webpackHotMiddleware(compiler));
+app.use(template({
+  templates: templatesPages,
+  mockData: mockPageInit,
+  rewriteRules
+}));
 
 app.listen(port, (err) => {
   if (err) {

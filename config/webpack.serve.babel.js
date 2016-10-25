@@ -10,7 +10,8 @@ import webpack from 'webpack';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 import OpenBrowserPlugin from 'open-browser-webpack-plugin';
 import ProfilePlugin from 'packing-profile-webpack-plugin';
-import autoprefixer from 'autoprefixer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import postcssCssnext from 'postcss-cssnext';
 import packing, { assetExtensions, localhost, port } from './packing';
 
 const {
@@ -19,6 +20,11 @@ const {
   assetsDist,
   entries
 } = packing.path;
+
+// js输出文件保持目录名称
+const JS_DIRECTORY_NAME = 'js';
+// js输出文件保持目录名称
+const CSS_DIRECTORY_NAME = 'css';
 
  /**
   * 给所有入口js加上HRM的clientjs
@@ -51,7 +57,7 @@ const pushClientJS = (entry, reload) => {
  */
 const styleLoaderString = (cssPreprocessor) => {
   const query = cssPreprocessor ? `!${cssPreprocessor}` : '';
-  return `style!css?importLoaders=2!postcss${query}`;
+  return ExtractTextPlugin.extract('style', `css?importLoaders=2!postcss${query}`);
 };
 
 /**
@@ -68,8 +74,8 @@ const webpackConfig = (options) => {
   let entry = isFunction(entries) ? entries() : entries;
 
   const output = {
-    chunkFilename: '[name].js',
-    filename: '[name].js',
+    chunkFilename: `${JS_DIRECTORY_NAME}/[name].js`,
+    filename: `${JS_DIRECTORY_NAME}/[name].js`,
     // prd环境静态文件输出地址
     path: assetsPath,
     // dev环境下数据流访问地址
@@ -82,12 +88,12 @@ const webpackConfig = (options) => {
       { test: /\.css$/i, loader: styleLoaderString() },
       {
         test: new RegExp(`\.(${assetExtensions.join('|')})$`, 'i'),
-        loader: `file?name=[path][name].[ext]&context=${assets}&emitFile=false`
+        loader: `file?name=[path][name].[ext]&context=${assets}&emitFile=false&limit=1`
       }
     ]
   };
 
-  const postcss = () => [autoprefixer];
+  const postcss = () => [postcssCssnext];
 
   const resolve = {
     modulesDirectories: [src, assets, 'node_modules']
@@ -114,7 +120,9 @@ const webpackConfig = (options) => {
   }
 
   plugins.push(
-    new ProfilePlugin(),
+    new ProfilePlugin({
+      profile: `src/profiles/${process.env.NODE_ENV}`
+    }),
     new webpack.DefinePlugin({
       // '__DEVTOOLS__': true,
       'process.env': {
@@ -123,6 +131,10 @@ const webpackConfig = (options) => {
       }
     }),
     new DashboardPlugin(),
+    // css files from the extract-text-plugin loader
+    new ExtractTextPlugin(`${CSS_DIRECTORY_NAME}/[name].css`, {
+      allChunks: true
+    }),
   );
 
   // 从配置文件中获取并生成webpack打包配置

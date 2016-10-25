@@ -1,0 +1,78 @@
+:root {
+  --mColor: #666;
+  --fColor: #d00;
+  --bColor: #00f;
+  --d-h: 40px;
+  --p-w: 20px;
+  --p: 2;
+  --gray-box-shadow: {
+    box-shadow: 6px 10px 18px 1px #333;
+  };
+  --light-box-shadow: {
+    box-shadow: 6px 10px 6px 2px #ee0;
+  }
+  --card-box-shadow: {
+    box-shadow: 0 5px 10px 2px #999;
+  };
+}
+
+@custom-media --large-screen (width > 1000px);
+@custom-media --medium-screen (width > 400px) and (width <= 1000px);
+@custom-media --smaller-screen (width <= 400px);
+
+html, body {
+  font-size: 20px;
+}
+
+.home {
+  box-sizing: border-box;
+  padding: 0 var(--p-w);
+  height: calc(100px - 1rem);
+  line-height: calc(var(--d-h) * var(--p));
+  display: flex;
+  background: linear-gradient(to top, var(--fColor), white, var(--bColor));
+  @apply --light-box-shadow;
+
+  & span {
+    color: #f0f;
+    margin-left: 30px;
+    &.author {
+      color: #aaa;
+      font-size: 14px;
+      font-style: italic;
+    }
+    @nest .active& {
+      text-decoration: line-through;
+    }
+  }
+
+  @media (--large-screen) {
+    color: var(--mColor);
+    background: linear-gradient(to top, var(--mColor), white, var(--mColor));
+    @apply --gray-box-shadow;
+  }
+
+  @media (--medium-screen) {
+    color: var(--fColor);
+  }
+}
+
+@media (--smaller-screen) {
+  .home {
+    color: var(--bColor);
+  }
+}
+
+@media (--smaller-screen) {
+  .home {
+    height: calc(var(--d-h) * 10);
+    background: #fff;
+    @apply --card-box-shadow;
+  }
+}
+
+@media (--smaller-screen) {
+  .home {
+    margin: 40px 30px;
+  }
+}
