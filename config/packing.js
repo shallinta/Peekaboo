@@ -50,13 +50,17 @@ export default {
     // },
     entries: () => {
       const entryPath = 'src/app/pages';
-      const entryPattern = '*/+(index.js|style.css)';
+      // const entryPattern = '*/{index.js,style.css}';
+      const entryPattern = '*/index.js';
       const cwd = path.resolve(entryPath);
       const config = {};
       packingGlob(entryPattern, { cwd }).forEach((page) => {
         const ext = path.extname(page).toLowerCase();
         let key = page.split('/')[0];
-        console.log(' --- page --- ', page, '\n ---- key ---- ', key);
+        // if(ext === '.css') {
+        //   key += '-style';
+        // }
+        // console.log(' --- page --- ', page, '\n ---- key ---- ', key);
         config[key] = path.join(cwd, page);
       });
       return config;

@@ -10,8 +10,13 @@ import webpack from 'webpack';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 import OpenBrowserPlugin from 'open-browser-webpack-plugin';
 import ProfilePlugin from 'packing-profile-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import postcssCssnext from 'postcss-cssnext';
+import posrcssPrecss from 'precss';
+import postcssCssGrace from 'cssgrace';
+import postcssCssReset from 'postcss-css-reset';
+import posrcssShort from 'postcss-short';
+import postcssX from '../plugins/postcss-x';
 import packing, { assetExtensions, localhost, port } from './packing';
 
 const {
@@ -23,8 +28,8 @@ const {
 
 // js输出文件保持目录名称
 const JS_DIRECTORY_NAME = 'js';
-// js输出文件保持目录名称
-const CSS_DIRECTORY_NAME = 'css';
+// css输出文件保持目录名称
+// const CSS_DIRECTORY_NAME = 'css';
 
  /**
   * 给所有入口js加上HRM的clientjs
@@ -57,7 +62,9 @@ const pushClientJS = (entry, reload) => {
  */
 const styleLoaderString = (cssPreprocessor) => {
   const query = cssPreprocessor ? `!${cssPreprocessor}` : '';
-  return ExtractTextPlugin.extract('style', `css?importLoaders=2!postcss${query}`);
+  // return ExtractTextPlugin.extract('style', `css?importLoaders=2!postcss${query}`);
+  return `style!css?importLoaders=2!postcss${query}`;
+
 };
 
 /**
@@ -75,7 +82,9 @@ const webpackConfig = (options) => {
 
   const output = {
     chunkFilename: `${JS_DIRECTORY_NAME}/[name].js`,
+    // chunkFilename: `[name].js`,
     filename: `${JS_DIRECTORY_NAME}/[name].js`,
+    // filename: `[name].js`,
     // prd环境静态文件输出地址
     path: assetsPath,
     // dev环境下数据流访问地址
@@ -93,7 +102,7 @@ const webpackConfig = (options) => {
     ]
   };
 
-  const postcss = () => [postcssCssnext];
+  const postcss = () => [postcssX, postcssCssnext, posrcssPrecss, postcssCssGrace, posrcssShort, postcssCssReset];
 
   const resolve = {
     modulesDirectories: [src, assets, 'node_modules']
@@ -132,9 +141,9 @@ const webpackConfig = (options) => {
     }),
     new DashboardPlugin(),
     // css files from the extract-text-plugin loader
-    new ExtractTextPlugin(`${CSS_DIRECTORY_NAME}/[name].css`, {
-      allChunks: true
-    }),
+    // new ExtractTextPlugin(`${CSS_DIRECTORY_NAME}/[name].css`, {
+    //   allChunks: true
+    // }),
   );
 
   // 从配置文件中获取并生成webpack打包配置

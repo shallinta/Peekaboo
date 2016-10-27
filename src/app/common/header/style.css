@@ -1,0 +1,128 @@
+:root {
+  --back-color-blue: #66f;
+  --front-color-white: #fff;
+  --front-color-pink: #f66;
+  --front-color-lightyellow: #ff9;
+  --blue-shadow: {
+    box-shadow: 0 2px 3px 2px #ccf;
+  };
+  --white-shadow: {
+    box-shadow: 0 0 4px 4px #fff inset;
+  };
+  --white-shadow-hover: {
+    box-shadow: 0 0 8px 6px #fff inset;
+  };
+}
+
+@custom-media --mobile (width <= 640px);
+@custom-media --monitor (width > 1000px);
+
+html, body {
+  font-size: 20px;
+}
+
+.common-header {
+  flex: 0 0 140px;
+  padding: 0 30px;
+  color: var(--front-color-white) var(--back-color-blue);
+  @apply --blue-shadow;
+  @media (--mobile) {
+    flex: 0 0 auto;
+    padding: 20px 0 0;
+  }
+  & .header-title {
+    display: flex;
+    align-items: center;
+    @media (--mobile) {
+      flex-direction: column;
+    }
+    & img {
+      height: 60px;
+      @media (--mobile) {
+        size: 40% auto;
+      }
+    }
+    & h1 {
+      margin-left: 20px;
+      font-size: 2.4rem;
+      @media (--mobile) {
+        margin: 20px * * 0;
+        font-size: 1.44rem;
+        text-align: center;
+        text-indent: 1em;
+      }
+      & sup {
+        color: var(--front-color-lightyellow);
+        font-size: 1.2rem;
+        position: relative -1.75rem * * -48%;
+        z-index: 1;
+        @media (--mobile) {
+          /*display: none;*/
+          font-size: 0.72rem;
+          position: relative -1rem * * -45%;
+        }
+      }
+      & em {
+        color: var(--front-color-pink);
+        font-size: 2.5rem;
+        position: relative;
+        z-index: 2;
+        @media (--mobile) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  & .header-menu {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+    @apply --white-shadow;
+    @media (--mobile) {
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      &:hover, &:active {
+        @apply --white-shadow-hover;
+      }
+    }
+  }
+  & .header-nav {
+    @media (--mobile) {
+      display: none;
+    }
+    &.header-nav-small {
+      display: initial;
+    }
+    & ul {
+      display: flex;
+      @media (--mobile) {
+        flex-direction: column;
+      }
+      & li {
+        margin-right: 20px;
+        text-align: right;
+        @media (--mobile) {
+          margin: 0;
+          font-size: 0.8rem;
+          text-align: center;
+          border-bottom: solid 1px #ccc;
+        }
+        &:first-child {
+          flex: 1;
+        }
+        & :any-link {
+          color: var(--front-color-white);
+          cursor: pointer;
+          &:hover {
+            color: var(--front-color-pink);
+          }
+        }
+        &.active :any-link {
+          color: var(--front-color-lightyellow);
+        }
+      }
+    }
+  }
+}

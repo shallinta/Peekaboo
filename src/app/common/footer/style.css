@@ -1,0 +1,63 @@
+:root {
+  --back-color-blue: #66f;
+  --front-color-white: #fff;
+  --front-color-pink: #f66;
+  --front-color-lightyellow: #ff9;
+  --front-color-darkyellow: #aa9;
+  --front-color-dark: #333;
+  --blue-shadow: {
+    box-shadow: 0 -2px 3px 2px #ccf;
+  };
+}
+
+@custom-media --mobile (width <= 640px);
+@custom-media --monitor (width > 1000px);
+
+html, body {
+  font-size: 20px;
+}
+
+.common-footer {
+  min-height: 200px;
+  padding: 20px 30px;
+  color: var(--front-color-dark) var(--back-color-blue);
+  font-size: 0.8rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  @apply --blue-shadow;
+  & :any-link {
+    color: var(--front-color-darkyellow);
+    font-weight: 300;
+    word-break: break-all;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  & .footer-info {
+    flex: 1;
+    display: flex;
+    @media (--mobile) {
+      flex-direction: column;
+    }
+    & ul {
+      flex: 1;
+      & li {
+        margin: 10px 20px;
+      }
+    }
+    & .logo {
+      height: 100px;
+      margin: 20px;
+      @media (--mobile) {
+        size: 35% auto;
+        margin: 10px 10px 0;
+      }
+    }
+  }
+  & .footer-author {
+    font-size: 0.7rem;
+    text-align: right;
+  }
+}
