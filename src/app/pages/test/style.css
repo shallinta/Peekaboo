@@ -30,7 +30,7 @@ html, body {
   height: calc(100px - 1rem);
   line-height: calc(var(--d-h) * var(--p));
   display: flex;
-  background: linear-gradient(to top, var(--fColor), white, var(--bColor));
+  background: linear-gradient(to top, var(--fColor) 0, white 50%, var(--bColor) 100%);
   @apply --light-box-shadow;
 
   & span {
