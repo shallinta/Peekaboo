@@ -25,7 +25,7 @@ class Page extends React.PureComponent {
     };
     const config3 = {
       width: 600,
-      height: 260,
+      height: 280,
       startX: -300,
       startY: -180,
       unit: 3,
@@ -74,6 +74,65 @@ class Page extends React.PureComponent {
         }
       ],
     };
+    const config4 = {
+      width: 200,
+      height: 100,
+      startX: -30,
+      startY: -50,
+      unit: 1,
+      ratio: 8,
+      curves: [
+        {
+          x1: -100,
+          x2: 100,
+          color: '#f99',
+          equation: x => Math.sin(x) + Math.cos(2 * x), // y=sin(x) + cos(2x)
+        },
+        {
+          x1: 100,
+          x2: 300,
+          color: '#9f9',
+          equation: x => 1.25 * (Math.sin(x) + Math.sin(2 * x)), // y=sin(x) + sin(2x)
+        },
+        {
+          x1: 300,
+          x2: 500,
+          color: '#99f',
+          equation: x => 1.5 * (Math.sin(x - Math.PI / 4) + Math.sin(2 * (x - Math.PI / 4)) + Math.sin(3 * (x - Math.PI / 4))),
+        },
+        {
+          color: '#3ff',
+          equation: x => 1 / x,
+        },
+        {
+          color: '#f3f',
+          equation: x => Math.log2(x),
+        },
+        {
+          color: '#ff3',
+          equation: x => x * x,
+        },
+      ]
+    };
+    const config5 = {
+      width: 200,
+      height: 75,
+      startX: -125,
+      startY: -40,
+      unit: 1,
+      ratio: 9,
+      curves: [
+        {
+          color: '#c33',
+          equation: () => 1.5,
+        },
+        {
+          color: '#999',
+          equation: x => 2 * Math.sin(x * 5) * Math.tan(1 / x) * Math.sin(11 / 6 * Math.PI - 10 * x), // 2sin(11π/6 -2x)+3+m
+        }
+      ]
+    };
+
     return (
       <div className="main-frame">
         <div className="clock">
@@ -84,6 +143,12 @@ class Page extends React.PureComponent {
         </div>
         <div className="graph">
           <Graph config={config3} />
+        </div>
+        <div className="graph">
+          <Graph config={config4} />
+        </div>
+        <div className="graph">
+          <Graph config={config5} />
         </div>
       </div>
     );

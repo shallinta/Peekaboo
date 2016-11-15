@@ -83,7 +83,12 @@ export default class GraphDrawer {
       canvas.moveTo(offsetX, zeroPointY);
       canvas.beginPath();
       for (let x = x1; x <= x2; x += 1) {
-        canvas.lineTo(offsetX, zeroPointY - equation(x));
+        const y = equation(x);
+        if (y !== Infinity) {
+          canvas.lineTo(offsetX, zeroPointY - y);
+        } else { // 无限值时不画点，移动到下一点
+          canvas.moveTo(offsetX, zeroPointY - equation(x + 1));
+        }
         offsetX += 1;
       }
       canvas.stroke();
