@@ -3,6 +3,8 @@ import './style.css';
 
 import Clock from '../../common/clock/';
 import Graph from '../../common/graph/';
+import AntLine from '../../common/ant-line';
+import Loading from '../../common/loading';
 
 class Page extends React.PureComponent {
 
@@ -115,22 +117,121 @@ class Page extends React.PureComponent {
       ]
     };
     const config5 = {
-      width: 200,
-      height: 75,
-      startX: -125,
-      startY: -40,
-      unit: 1,
-      ratio: 9,
+      width: 350,
+      height: 350,
+      startX: -10,
+      startY: -10,
+      unit: 2,
+      ratio: 1,
       curves: [
+        // {
+        //   color: '#c33',
+        //   equation: () => 1.5,
+        // },
+        // {
+        //   color: '#999',
+        //   equation: x => 2 * Math.sin(x * 5) * Math.tan(1 / x) * Math.sin(11 / 6 * Math.PI - 10 * x), // 2sin(11π/6 -2x)+3+m
+        // },
         {
-          color: '#c33',
-          equation: () => 1.5,
+          x1: 0,
+          x2: 300,
+          color: '#f00',
+          equation: (x) => {
+            const w = 300;
+            const d = w / 2;
+            return d / Math.tan(1) * (Math.tan((x - d) / d) + Math.tan(1));
+          },
         },
         {
-          color: '#999',
-          equation: x => 2 * Math.sin(x * 5) * Math.tan(1 / x) * Math.sin(11 / 6 * Math.PI - 10 * x), // 2sin(11π/6 -2x)+3+m
+          x1: 0,
+          x2: 300,
+          color: '#00f',
+          equation: (x) => {
+            const w = 300;
+            const d = w / 2;
+            if (x < d) {
+              return d * Math.sqrt(1 - (x = (x - d) / d) * x);
+            } else {
+              return w - d * Math.sqrt(1 - (x = (x - d) / d) * x);
+            }
+          }
         }
       ]
+    };
+    const config6 = {
+      width: 200,
+      height: 50,
+      unit: 3,
+      antLength: 10,
+      spaceLength: 15,
+      direction: 2,
+      color: '#f93',
+      speed: 30,
+      // offset: 3,
+    };
+    const config7 = {
+      width: 800,
+      height: 40,
+      duration: 2000,
+      radius: 3,
+      delay: 80,
+      count: 5,
+      type: 1,
+      speed: 20,
+      color: '#fff',
+    };
+    const config8 = {
+      width: 800,
+      height: 40,
+      duration: 2000,
+      radius: 3,
+      delay: 240,
+      count: 3,
+      type: 2,
+      speed: 10,
+      color: '#fff',
+    };
+    const config9 = {
+      width: 350,
+      height: 350,
+      unit: 3,
+      antLength: 10,
+      spaceLength: 15,
+      color: '#333',
+      speed: 30,
+    };
+    const config10 = {
+      width: 800,
+      height: 40,
+      unit: 3,
+      antLength: 10,
+      spaceLength: 15,
+      color: '#f9c',
+      speed: 30,
+    };
+    const config11 = {
+      width: 50,
+      height: 50,
+      duration: 2000,
+      radius: 2,
+      delay: 130,
+      count: 5,
+      type: 1,
+      style: Loading.styles.CIRCLE,
+      speed: 10,
+      color: '#fff',
+    };
+    const config12 = {
+      width: 50,
+      height: 50,
+      duration: 2000,
+      radius: 2,
+      delay: 240,
+      count: 3,
+      type: 2,
+      style: Loading.styles.CIRCLE,
+      speed: 10,
+      color: '#fff',
     };
 
     return (
@@ -149,6 +250,26 @@ class Page extends React.PureComponent {
         </div>
         <div className="graph">
           <Graph config={config5} />
+          <AntLine config={config9} />
+        </div>
+        <div className="ant-line">
+          <AntLine config={config6} />
+          <h2>这是一条蚂蚁线</h2>
+        </div>
+        <div className="loading">
+          <Loading config={config7} />
+          <AntLine config={config10} />
+        </div>
+        <div className="loading">
+          <Loading config={config8} />
+        </div>
+        <div className="loading loading2">
+          <div className="loading-inner">
+            <Loading config={config11} />
+          </div>
+          <div className="loading-inner">
+            <Loading config={config12} />
+          </div>
         </div>
       </div>
     );

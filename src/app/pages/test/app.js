@@ -1,12 +1,17 @@
 import React from 'react';
 import './style.css';
 
+import A from './A';
+
 class Page extends React.PureComponent {
 
   componentWillMount() {
     this.updateState({
       x: '12355'
     });
+    this.a = new A();
+    // this.a.y = 45;
+    this.a.foo();
   }
 
   updateState(state) {

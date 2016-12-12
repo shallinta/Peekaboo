@@ -29,13 +29,39 @@
 }
 
 .graph {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  padding: 5px;
   color: #333;
-  /*background: black;*/
   text-align: center;
-  border-radius: 5px;
+}
+
+.ant-line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  background: #9fc;
+}
+
+.loading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background: #6cf;
+}
+
+.loading2 {
+  padding: 20px;
+  display: flex;
+  .loading-inner {
+    margin: 0 20px;
+  }
 }
