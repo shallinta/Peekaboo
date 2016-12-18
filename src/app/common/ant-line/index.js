@@ -41,13 +41,17 @@ class AntLine extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this.loop = setInterval(() => {
       this.setState({
         ...this.state,
         offset: this.state.offset + 1
       });
     }, this.state.speed);
     this.drawAntLine();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.loop);
   }
 
   drawAntLine() {

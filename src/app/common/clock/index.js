@@ -127,13 +127,17 @@ class Clock extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this.loop = setInterval(() => {
       this.setState({
         ...this.state,
         time: new Date().toTimeString().split(' ')[0]
       });
     }, 1000);
     this.drawClock();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.loop);
   }
 
   drawClock() {

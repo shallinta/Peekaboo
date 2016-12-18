@@ -44,13 +44,17 @@ class Loading extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this.loop = setInterval(() => {
       this.setState({
         ...this.state,
         t: this.state.t + this.state.speed
       });
     }, this.state.speed);
     this.drawLoading();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.loop);
   }
 
   drawLoading() {
