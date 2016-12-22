@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 
+import Esperanto from '../../common/esperanto';
 import IndexPage from './content-index';
 import PaintPage from './content-paint';
 import TestPage from './content-test';
@@ -68,7 +69,7 @@ class Page extends React.PureComponent {
           {contentNode}
         </div>
         <footer className="footer">
-          Copyright &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan</a>
+          <Esperanto title="Copyright">Kopirajto</Esperanto> &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan</a>
         </footer>
       </div>
     );

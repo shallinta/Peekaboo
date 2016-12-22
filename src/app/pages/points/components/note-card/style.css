@@ -1,0 +1,118 @@
+.note-card-wraper {
+  & .note-card-container {
+    position: relative;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 1px 1px 1px 2px #333c;
+  }
+  &.card {
+    & .note-card-container {
+      margin: 10px;
+      padding: 10px;
+    }
+  }
+  &.full {
+    display: flex;
+    position: absolute 0;
+    z-index: 200;
+    color: inherit #3339;
+    overflow: hidden;
+    & .note-card-container {
+      margin: 20px auto;
+      padding: 20px;
+      width: 640px;
+      display: flex;
+      flex-direction: column;
+      & .note-card-header, & .note-card-footer {
+        flex: 0;
+        & p {
+          line-height: 2.5;
+        }
+      }
+      & .note-card-content {
+        flex: 1;
+        max-height: initial;
+        overflow: auto;
+      }
+      & .note-card-close-btn {
+        display: block;
+      }
+    }
+  }
+  &.title {
+    & .note-card-container {
+      margin: 5px;
+      padding: 0 10px;
+      background: transparent;
+      box-shadow: none;
+      & .note-card-content, & .note-card-footer {
+        display: none;
+      }
+      & .note-card-header {
+        padding: 0 0 0 10px;
+        border-bottom: none;
+        & h1 {
+          line-height: 1.5;
+          font-weight: normal;
+        }
+        & p {
+          display: none;
+        }
+      }
+    }
+  }
+  &.hidden {
+    display: none;
+  }
+}
+
+.note-card-content {
+  padding: 10px;
+  max-height: 250px;
+  overflow: hidden;
+  & p {
+    line-height: 1.6;
+  }
+  & .empty {
+    font-style: italic;
+    text-align: center;
+    color: #999;
+  }
+}
+
+.note-card-close-btn {
+  display: none;
+  position: absolute 5px 5px * *;
+  size: 20px;
+  line-height: 20px;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: -1px 1px 1px 0 #333;
+  &:hover {
+    color: #fff #f33;
+    cursor: pointer;
+  }
+}
+
+.note-card-header {
+  padding: * 10px 5px;
+  border-bottom: 1px solid #ddd;
+  & h1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  & p {
+    font-size: 12px/1.6;
+    text-indent: 2em;
+    color: #999;
+  }
+}
+
+.note-card-footer {
+  border-top: 1px solid #ddd;
+  padding: 10px 10px * *;
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+  color: #999;
+}

@@ -1,0 +1,26 @@
+.common-code-pre {
+  margin: 10px 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  color: #333 gray(90%);
+  & code {
+    display: block;
+  }
+  & var {
+    color: #c33;
+  }
+  & em {
+    padding: 0 2px;
+    font-style: normal;
+    background: #ff9;
+    border-radius: 2px;
+  }
+  & key {
+    color: #00f;
+  }
+  & comment {
+    color: #0c0;
+    font-style: italic;
+  }
+}

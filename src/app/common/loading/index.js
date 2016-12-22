@@ -5,14 +5,14 @@ import LoadingDrawer from '../../utils/drawLoading';
 const defaultConfig = {
   width: 100,
   height: 100,
-  duration: 5000,
-  radius: 4,
-  delay: 20,
+  duration: 2000,
+  radius: 2,
+  delay: 150,
   count: 5,
   type: 1,
-  style: LoadingDrawer.styles.LINE,
+  style: LoadingDrawer.styles.CIRCLE,
   color: '#99c',
-  speed: 50,
+  speed: 20,
   t: 0,
 };
 

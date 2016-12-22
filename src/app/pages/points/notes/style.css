@@ -1,0 +1,195 @@
+.notes-list {
+  flex: 1;
+  display: flex;
+  & .notes-list-item {
+    flex: 1;
+    max-width: 450px;
+    overflow: hidden;
+    & .note-section-title {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+  }
+}
+
+.note-x-height {
+  & .example {
+    margin: 10px;
+    padding: 0 10px;
+    line-height: 3;
+    box-shadow: 0 0 5px 1px #9339;
+    & .icon-arrow {
+      // display: inline-block;
+      width: 20px;
+      height: 1ex;
+      margin-left: 10px;
+      background: url(../../../../../assets/images/arrow.png) no-repeat center;
+    }
+  }
+  & .example-controler {
+    display: flex;
+    margin: 20px 10px;
+    height: 30px;
+    box-shadow: 0 0 5px 1px #3399;
+    overflow: hidden;
+    & input {
+      flex: 1;
+      padding: 0 10px;
+      border: none;
+      border-left: 1px solid #ccc;
+    }
+    & span {
+      flex: 0 0 60px;
+      padding: 0 10px;
+      line-height: 30px;
+    }
+  }
+}
+
+.note-vertical-align {
+  & .image {
+    margin: 10px;
+    box-shadow: 0 0 5px 1px #3339;
+    &.zoom {
+      position: absolute;
+      z-index: 999;
+      transform: scale(1.5);
+      transition: all .5s linear;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  & .example {
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 1px #9339;
+    & .container {
+      line-height: 300px;
+      width: 3000px;
+      background: #f69;
+      & .line {
+        position: relative;
+        font-size: 36px;
+        color: #fff #000;
+        padding: 0 10px;
+        & img {
+          size: 120px;
+          margin: 0 5px;
+        }
+        & .dot {
+          size: 6px;
+          margin: 0 5px;
+          background: #0f0;
+        }
+        & .text {
+          font-size: 24px;
+        }
+        & .num {
+          font-size: 12px;
+        }
+        & .baseline {
+          position: relative;
+          left: -640px;
+          width: 1600px;
+          height: .5px;
+          background: #f00;
+        }
+      }
+    }
+  }
+  & .example-controler {
+    margin: 10px;
+    box-shadow: 0 0 5px 1px #3399;
+    overflow: hidden;
+    & label {
+      display: flex;
+      height: 30px;
+      overflow: hidden;
+      & select {
+        flex: 1;
+        padding: 0 10px;
+        border: none;
+        background: transparent;
+      }
+      & input {
+        flex: 1;
+        padding: 0 10px;
+        border: none;
+        border-top: 1px solid #ccc;
+      }
+      & span {
+        flex: 0 0 120px;
+        padding: 0 10px;
+        line-height: 30px;
+        border-right: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+      }
+      &:first-child {
+        & span {
+          border-top: none;
+        }
+      }
+    }
+  }
+  & .center {
+    text-align: center;
+  }
+}
+
+.note-z-index {
+  & .example {
+    position: relative;
+    z-index: 1;
+    margin: 10px 10px 20px 20px;
+    padding: 10px;
+    width: 560px;
+    height: 300px;
+    line-height: 3;
+    /*box-shadow: 0 0 5px 1px #9339;*/
+    & .pane {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      text-align: right;
+    }
+    & .subpane {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      color: #f33;
+    }
+    & .pane1 {
+      background: lightgray;
+      & .pane1-1 {
+        z-index: 20;
+        background: darkgray;
+      }
+      & .pane1-2 {
+        z-index: 10;
+        background: dimgray;
+        top: 50px;
+        left: 50px;
+      }
+    }
+    & .pane2 {
+      top: 80px;
+      left: 80px;
+      background: black;
+      & .pane2-1 {
+        z-index: 2;
+        background: darkgray;
+      }
+      & .pane2-2 {
+        z-index: 1;
+        background: dimgray;
+        top: 50px;
+        left: 50px;
+      }
+    }
+  }
+}

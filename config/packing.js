@@ -78,7 +78,7 @@ export default {
   // webserver端口
   port: {
     // 开发环境端口号
-    dev: 8081,
+    dev: 10086,
     // 预览编译后结果的端口号
     dist: 8080
   },
@@ -115,7 +115,7 @@ export default {
   // require! 表示使用本地mock文件
   rewriteRules: {
     // 网站URL与模版的对应路由关系
-    '^/$': '/home.pug',
+    '^/$': '/points.pug',
 
     // API转发
     '^/api/(.*)': 'require!/mock/api/$1.js'

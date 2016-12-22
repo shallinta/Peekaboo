@@ -1,0 +1,8 @@
+.common-code-word {
+  margin: * 5px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-size: calc(14px * 0.9);
+  vertical-align: middle;
+  color: #c33 color(#f99 alpha(-80%));
+}

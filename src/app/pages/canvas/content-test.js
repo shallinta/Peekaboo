@@ -188,6 +188,7 @@ class TestPage extends React.PureComponent {
       delay: 240,
       count: 3,
       type: 2,
+      style: Loading.styles.LINE,
       speed: 10,
       color: '#fff',
     };
@@ -206,6 +207,7 @@ class TestPage extends React.PureComponent {
       unit: 3,
       antLength: 10,
       spaceLength: 15,
+      style: Loading.styles.LINE,
       color: '#f9c',
       speed: 30,
     };
@@ -217,7 +219,6 @@ class TestPage extends React.PureComponent {
       delay: 130,
       count: 5,
       type: 1,
-      style: Loading.styles.CIRCLE,
       speed: 10,
       color: '#fff',
     };
@@ -229,7 +230,6 @@ class TestPage extends React.PureComponent {
       delay: 240,
       count: 3,
       type: 2,
-      style: Loading.styles.CIRCLE,
       speed: 10,
       color: '#fff',
     };

@@ -1,0 +1,42 @@
+.common-esperanto {
+  position: relative;
+  padding: 3px 5px;
+  line-height: 1;
+  font-style: normal;
+  & .title {
+    display: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    background: #37362d;
+    box-shadow: 0 0 1px 2px #9999;
+  }
+  &:hover {
+    background: #f4f943;
+    box-shadow: 0 0 1px 1px #ddd;
+    border-radius: 3px;
+    color: #333;
+    & .title {
+      display: flex;
+      position: absolute -30px * * 0;
+      &:before {
+        content: '\0020';
+        position: absolute * * -12px 50%;
+        margin-left: -6px;
+        size: 12px;
+        border: 6px solid transparent;
+        border-top-color: #37362d;
+        box-sizing: border-box;
+      }
+      &.lower {
+        position: absolute initial * -30px 0;
+        &:before {
+          position: absolute -12px * * 50%;
+          border-top-color: transparent;
+          border-bottom-color: #37362d;
+        }
+      }
+    }
+  }
+}
