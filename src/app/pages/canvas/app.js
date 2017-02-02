@@ -1,10 +1,18 @@
 import React from 'react';
 import './style.css';
 
-import Esperanto from '../../common/esperanto';
+import Vorto from '../../common/vorto';
 import IndexPage from './content-index';
+import PracticePage from './content-practice';
 import PaintPage from './content-paint';
 import TestPage from './content-test';
+
+const tabs = {
+  index: '首页',
+  practice: '练习',
+  paint: '绘板',
+  test: '测试',
+};
 
 class Page extends React.PureComponent {
 
@@ -14,7 +22,7 @@ class Page extends React.PureComponent {
 
   componentWillMount() {
     let hash = location.hash.replace('#', '');
-    hash = hash || 'index';
+    hash = tabs[hash] && hash || 'index';
     this.updateState({
       ...this.state,
       page: hash
@@ -43,6 +51,8 @@ class Page extends React.PureComponent {
     switch (this.state.page) {
       case 'index':
         return <IndexPage />;
+      case 'practice':
+        return <PracticePage />;
       case 'paint':
         return <PaintPage />;
       case 'test':
@@ -54,22 +64,26 @@ class Page extends React.PureComponent {
 
   render() {
     const contentNode = this.getContentNode();
+    const tabNames = Object.keys(tabs);
 
     return (
       <div className="wrapper">
         <header className="header">
           <h2>Canvas</h2>
           <ul>
-            <li data-id="index" className={this.state.page === 'index' ? 'active' : ''} onClick={this.chooseContent}>首页</li>
-            <li data-id="paint" className={this.state.page === 'paint' ? 'active' : ''} onClick={this.chooseContent}>绘板</li>
-            <li data-id="test" className={this.state.page === 'test' ? 'active' : ''} onClick={this.chooseContent}>测试</li>
+            {
+              tabNames.map(tab => (
+                <li key={`tab-${tab}`} data-id={tab} className={this.state.page === tab ? 'active' : ''} onClick={this.chooseContent}>{tabs[tab]}</li>
+                )
+              )
+            }
           </ul>
         </header>
         <div className="content">
           {contentNode}
         </div>
         <footer className="footer">
-          <Esperanto title="Copyright">Kopirajto</Esperanto> &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan</a>
+          <Vorto title="Copyright">Kopirajto</Vorto> &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan</a>
         </footer>
       </div>
     );

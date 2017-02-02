@@ -1,7 +1,7 @@
 import React from 'react';
-import './style-index.css';
+import './style.css';
 
-class IndexPage extends React.PureComponent {
+class Page extends React.PureComponent {
 
   render() {
     return (
@@ -14,4 +14,4 @@ class IndexPage extends React.PureComponent {
   }
 }
 
-export default IndexPage;
+export default Page;

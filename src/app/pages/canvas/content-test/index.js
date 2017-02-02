@@ -1,10 +1,10 @@
 import React from 'react';
-import './style-test.css';
+import './style.css';
 
-import Clock from '../../common/clock/';
-import Graph from '../../common/graph/';
-import AntLine from '../../common/ant-line';
-import Loading from '../../common/loading';
+import Clock from '../../../common/clock/';
+import Graph from '../../../common/graph/';
+import AntLine from '../../../common/ant-line';
+import Loading from '../../../common/loading';
 
 class TestPage extends React.PureComponent {
 

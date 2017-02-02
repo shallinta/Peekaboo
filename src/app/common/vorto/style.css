@@ -1,4 +1,4 @@
-.common-esperanto {
+.common-vorto {
   position: relative;
   padding: 3px 5px;
   line-height: 1;
@@ -14,7 +14,6 @@
   }
   &:hover {
     background: #f4f943;
-    box-shadow: 0 0 1px 1px #ddd;
     border-radius: 3px;
     color: #333;
     & .title {

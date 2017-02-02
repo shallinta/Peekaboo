@@ -1,0 +1,35 @@
+.pv-canvas-container {
+  position: relative;
+  overflow: hidden;
+  & canvas {
+    max-width: 100%;
+    border: thin solid #aaa;
+  }
+}
+
+.pv-canvas-rubberband {
+  position: absolute;
+  border: 2px dashed #2fe3d3;
+  cursor: crosshair;
+  display: none;
+  background: rgba(255, 255, 255, .2);
+}
+
+.pv-canvas-operator {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 100%;
+  & .pv-btn {
+    flex: 1;
+    margin: 0 5px;
+    height: 28px;
+    border: none;
+    color: #fff;
+    background: #17ba45;
+    &:hover {
+      background: #52de79;
+      cursor: pointer;
+    }
+  }
+}

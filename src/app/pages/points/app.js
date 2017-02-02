@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-import Esperanto from '../../common/esperanto';
+import Vorto from '../../common/vorto';
 import IndexPage from './content-index';
 import CategoryPage from './content-category';
 import AboutPage from './content-about';
@@ -58,7 +58,7 @@ class Page extends React.PureComponent {
     return (
       <div className="app-container">
         <header className="header">
-          <h2><Esperanto title="Notes" lower>Notoj</Esperanto> <Esperanto title="of" lower>de</Esperanto> <Esperanto title="Front-End" lower>Fronto-Pinto</Esperanto></h2>
+          <h2><Vorto title="Notes" lower>Notoj</Vorto> <Vorto title="of" lower>de</Vorto> <Vorto title="Front-End" lower>Fronto-Pinto</Vorto></h2>
           <ul>
             <li data-id="index" className={this.state.page === 'index' ? 'active' : ''} onClick={this.chooseContent}>首页</li>
             <li data-id="category" className={this.state.page === 'category' ? 'active' : ''} onClick={this.chooseContent}>分类</li>
@@ -67,7 +67,7 @@ class Page extends React.PureComponent {
         </header>
         <div className="content">{contentNode}</div>
         <footer className="footer">
-          <Esperanto title="Copyright">Kopirajto</Esperanto> &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan </a> 2016
+          <Vorto title="Copyright">Kopirajto</Vorto> &copy; <a href="https://github.com/shallinta/Peekaboo"> John Chan </a> 2016
         </footer>
       </div>
     );

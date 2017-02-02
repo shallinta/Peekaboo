@@ -1,0 +1,138 @@
+.cm-card-wraper {
+  & .cm-card-container {
+    position: relative;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 1px 1px 1px 2px #333c;
+  }
+  &.card {
+    max-width: 480px;
+    & .cm-card-container {
+      margin: 10px;
+      padding: 10px;
+    }
+  }
+  &.full {
+    display: flex;
+    position: absolute 0;
+    z-index: 200;
+    color: inherit #3339;
+    overflow: hidden;
+    & .cm-card-container {
+      margin: 20px auto;
+      padding: 20px;
+      width: 900px;
+      display: flex;
+      flex-direction: column;
+      & .cm-card-header, & .cm-card-footer {
+        flex: 0;
+        & p {
+          line-height: 2.5;
+        }
+      }
+      & .cm-card-content {
+        flex: 1;
+        max-height: initial;
+        overflow: auto;
+        & .cm-card-preview {
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+        }
+      }
+      & .cm-card-close-btn {
+        display: block;
+      }
+    }
+  }
+  &.title {
+    & .cm-card-container {
+      margin: 5px;
+      padding: 0 10px;
+      background: transparent;
+      box-shadow: none;
+      & .cm-card-content, & .cm-card-footer {
+        display: none;
+      }
+      & .cm-card-header {
+        padding: 0 0 0 10px;
+        border-bottom: none;
+        & h1 {
+          line-height: 1.5;
+          font-weight: normal;
+        }
+        & p {
+          display: none;
+        }
+      }
+    }
+  }
+  &.hidden {
+    display: none;
+  }
+}
+
+.cm-card-content {
+  padding: 10px;
+  overflow: hidden;
+  & p {
+    line-height: 1.6;
+  }
+  & .cm-card-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-width: 100%;
+    }
+  }
+  & .empty {
+    font-style: italic;
+    text-align: center;
+    color: #999;
+  }
+}
+
+.cm-card-close-btn {
+  display: none;
+  position: absolute 5px 5px * *;
+  size: 20px;
+  line-height: 20px;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: -1px 1px 1px 0 #333;
+  &:hover {
+    color: #fff #f33;
+    cursor: pointer;
+  }
+}
+
+.cm-card-header {
+  padding: * 10px 5px;
+  border-bottom: 1px solid #ddd;
+  & h1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  & p {
+    font-size: 12px/1.6;
+    text-indent: 2em;
+    color: #999;
+  }
+  & .cm-card-time {
+    font-size: 12px/2;
+    text-indent: 0;
+    color: #ccc;
+    margin: -6px 0 6px;
+  }
+}
+
+.cm-card-footer {
+  border-top: 1px solid #ddd;
+  padding: 10px 10px * *;
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+  color: #999;
+}

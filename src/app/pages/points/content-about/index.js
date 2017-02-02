@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-import Esperanto from '../../../common/esperanto';
+import Vorto from '../../../common/vorto';
 
 class SubPage extends React.PureComponent {
 
@@ -9,7 +9,7 @@ class SubPage extends React.PureComponent {
     return (
       <div className="wrapper-about">
         <h2>
-          <Esperanto title="Hello!" lower>Saluton!</Esperanto>Here is the about page.
+          <Vorto title="Hello!" lower>Saluton!</Vorto>Here is the about page.
         </h2>
       </div>
     );

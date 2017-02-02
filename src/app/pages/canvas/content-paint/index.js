@@ -1,7 +1,7 @@
 import React from 'react';
-import './style-paint.css';
+import './style.css';
 
-class PaintPage extends React.PureComponent {
+class Page extends React.PureComponent {
 
   render() {
     return (
@@ -14,4 +14,4 @@ class PaintPage extends React.PureComponent {
   }
 }
 
-export default PaintPage;
+export default Page;
