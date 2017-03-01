@@ -3,13 +3,14 @@
   "description": "",
   "version": "0.0.0",
   "scripts": {
-    "start": "npm run serve",
+    "start": "better-npm-run serve",
     "build": "better-npm-run build",
     "build:dev": "better-npm-run build:dev",
     "build:beta": "better-npm-run build:beta",
     "build:prod": "better-npm-run build:prod",
     "serve": "better-npm-run serve",
     "serve:quiet": "better-npm-run serve:quiet",
+    "serve:nodashboard": "better-npm-run serve:nodashboard",
     "serve:dist": "better-npm-run build && better-npm-run serve:dist",
     "eslint": "better-npm-run eslint"
   },
@@ -62,6 +63,7 @@
     }
   },
   "devDependencies": {
+    "better-npm-run": "^0.0.11",
     "express": "^4.14.0",
     "open-browser-webpack-plugin": "^0.0.2",
     "packing-template-pug": "^1.0.5",
@@ -100,6 +102,7 @@
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^2.2.0",
     "eslint-plugin-react": "^6.2.0",
+    "express": "^4.14.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.3",

@@ -1,4 +1,33 @@
 .paint-wrapper {
-  display: flex;
+  height: 100%;
   padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+
+  & .content-wrapper {
+    padding: 20px 0;
+    /*flex: 1;*/
+    /*min-width: 900px;*/
+    /*max-width: 1350px;*/
+    width: 1350px;
+    height: 100%;
+    display: flex;
+
+    & .palette-area {
+      flex: 1;
+      margin-right: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    & .aside-area {
+      padding: 20px;
+      flex: 0 0 300px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      color: inherit color(#fff alpha(.5));
+    }
+
+  }
 }
